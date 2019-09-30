@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Web Admin</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- TOP MENU -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">Web Admin</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- LEFT MENU-->
+    <nav class="sidebar-wrapper sidebar" id="sidebar">
+
+      <ul class="nav nav nav-pills " id="side-menu ">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/Admin/AllUsers']"><i class="fa fa-user"></i> Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/Admin/AllRoles']"><i class="fa fa-edit fa-fw"></i> Roles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/Report/Member']"><i class="fa fa-user"></i>All Members Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/Report/Yearwise']"><i class="fa fa-edit fa-fw"></i>Year Wise Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/Report/Monthwise']"><i class="fa fa-diamond"></i>Month Wise Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/Report/Renewal']"><i class="fa fa-refresh"></i>Renewal Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/Scheme/Add']"><i class="fa fa-plus-square"></i>Add Scheme</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/Plan/Add']"><i class="fa fa-plane"></i>Add Plan</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/AdminLogout']"><i class="fa fa-eye"></i>Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Metis Menu Plugin JavaScript -->
+  <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>

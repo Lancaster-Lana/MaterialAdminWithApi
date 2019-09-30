@@ -1,0 +1,8 @@
+F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Models\bin\Debug\WebAdmin.Models.dll
+F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Models\bin\Debug\WebAdmin.Models.pdb
+F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Models\bin\Debug\System.ComponentModel.Annotations.dll
+F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Models\obj\Debug\WebAdmin.Models.csproj.CoreCompileInputs.cache
+F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Models\obj\Debug\WebAdmin.Models.csproj.CopyComplete
+F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Models\obj\Debug\WebAdmin.Models.dll
+F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Models\obj\Debug\WebAdmin.Models.pdb
+F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Models\obj\Debug\WebAdmin.Models.csprojAssemblyReference.cache

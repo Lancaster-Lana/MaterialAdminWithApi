@@ -1,0 +1,59 @@
+/*@mixin snackbar($theme) {
+  $primary: mat-color(map-get($theme, primary));
+  $primary-text: mat-color(map-get($theme, primary), default-contrast);
+  $warn: mat-color(map-get($theme, warn));
+  $warn-text: mat-color(map-get($theme, warn), default-contrast);
+
+  @mixin angular-material-theme($theme) {
+    @include mat-core-theme($theme);
+    @include mat-autocomplete-theme($theme);
+    @include mat-button-theme($theme);
+    @include mat-button-toggle-theme($theme);
+    @include mat-card-theme($theme);
+    @include mat-checkbox-theme($theme);
+    @include mat-chips-theme($theme);
+    @include mat-datepicker-theme($theme);
+    @include mat-dialog-theme($theme);
+    @include mat-grid-list-theme($theme);
+    @include mat-icon-theme($theme);
+    @include mat-input-theme($theme);
+    @include mat-list-theme($theme);
+    @include mat-menu-theme($theme);
+    @include mat-progress-bar-theme($theme);
+    @include mat-progress-spinner-theme($theme);
+    @include mat-radio-theme($theme);
+    @include mat-select-theme($theme);
+    @include mat-sidenav-theme($theme);
+    @include mat-slide-toggle-theme($theme);
+    @include mat-slider-theme($theme);
+    @include mat-tabs-theme($theme);
+    @include mat-toolbar-theme($theme);
+    @include mat-tooltip-theme($theme);
+  }*/
+
+  .style-succes {
+    color: forestgreen;
+    background-color: aquamarine;
+  }
+
+  .style-succes .mat-simple-snackbar-action {
+    color: darkgreen;
+  }
+
+  .style-error {
+    color: brown;
+    background-color: coral;
+  }
+
+  .style-error .mat-simple-snackbar-action {
+    color: red;
+  }
+
+.style-warn {
+  color: darkblue;
+  background-color: orange;
+}
+
+.style-warn .mat-simple-snackbar-action {
+  color: darkblue;
+}
