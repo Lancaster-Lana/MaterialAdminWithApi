@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Core3Ang8
+namespace AdminUI
 {
     public class Startup
     {
@@ -47,6 +47,8 @@ namespace Core3Ang8
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseAuthorization();
 
             app.UseMvc(routes =>
             {

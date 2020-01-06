@@ -1,11 +1,11 @@
 {
-  "name": "Core3Ang8",
+  "name": "AdminUI",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng run Core3Ang8:server:dev",
+    "build:ssr": "ng run AdminUI:server:dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

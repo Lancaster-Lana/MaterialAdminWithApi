@@ -3,3 +3,7 @@
 ################################################################################
 
 /WebApi/WebAdmin.ViewModels/obj/Debug
+/WebApi/Admin.Api/bin/Debug/netcoreapp2.2
+/WebApi/WebAdmin.EF/obj
+/WebApi/WebAdmin.Api/bin/Debug/netcoreapp2.2
+/WebApi/WebAdmin.Api/obj

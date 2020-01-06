@@ -1,0 +1,178 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\Admin.Api\\Admin.Api.csproj": {}
+  },
+  "projects": {
+    "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\Admin.Api\\Admin.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\Admin.Api\\Admin.Api.csproj",
+        "projectName": "Admin.Api",
+        "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\Admin.Api\\Admin.Api.csproj",
+        "packagesPath": "C:\\Users\\Sveta\\.nuget\\packages\\",
+        "outputPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\Admin.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Sveta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Dal\\WebAdmin.DAL.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Dal\\WebAdmin.DAL.csproj"
+              },
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Interface\\WebAdmin.Interfaces.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Interface\\WebAdmin.Interfaces.csproj"
+              },
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj"
+              },
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[4.0.1, )"
+            },
+            "System.Linq.Dynamic.Core": {
+              "target": "Package",
+              "version": "[1.0.8.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Dal\\WebAdmin.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Dal\\WebAdmin.DAL.csproj",
+        "projectName": "WebAdmin.DAL",
+        "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Dal\\WebAdmin.DAL.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Interface\\WebAdmin.Interfaces.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Interface\\WebAdmin.Interfaces.csproj"
+              },
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj"
+              },
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Interface\\WebAdmin.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Interface\\WebAdmin.Interfaces.csproj",
+        "projectName": "WebAdmin.Interfaces",
+        "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Interface\\WebAdmin.Interfaces.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj"
+              },
+              "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj": {
+                "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj",
+        "projectName": "WebAdmin.Models",
+        "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.Models\\WebAdmin.Models.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj",
+        "projectName": "WebAdmin.ViewModels",
+        "projectPath": "F:\\MY\\GIT\\A8+CoreApi-Admin\\WebApi\\WebAdmin.ViewModels\\WebAdmin.ViewModels.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

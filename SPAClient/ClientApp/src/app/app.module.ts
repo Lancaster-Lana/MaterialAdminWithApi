@@ -11,37 +11,33 @@ import { BsDatepickerModule, } from 'ngx-bootstrap/datepicker';
 import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-import { MemberListComponent } from './MemberRegistration/List/app.MemberListComponent ';
-import { MemberViewComponent } from './MemberRegistration/List/app.MemberViewComponent';
-import { PaymentOverviewComponent } from './Payment/List/app.PaymentOverviewComponent';
-import { PaymentListComponent } from './Payment/List/app.PaymentListComponent';
-import { RenewalComponent } from './Renewal/app.Renewal.Component';
+import { MemberListComponent } from './MemberRegistration/List/memberList.component ';
+import { MemberViewComponent } from './MemberRegistration/List/memberView.component';
+import { PaymentOverviewComponent } from './Payment/List/paymentOverview.component';
+import { PaymentListComponent } from './Payment/List/paymentList.component';
+import { RenewalComponent } from './Renewal/renewal.component';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './Login/app.LoginComponent';
+import { LoginComponent } from './Login/login.component';
 
 import { AppAdminLayoutComponent } from './_layout/app-adminlayout.component';
-import { AdminLogoutComponent } from './Login/app.AdminLogout.Component';
+import { AdminLogoutComponent } from './Login/adminLogout.сomponent';
 import { AdminDashboardComponent } from './AdminDashboard/app.AdminDashboardComponent';
 import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
 
 import { AppUserLayoutComponent } from './_layout/app-userlayout.component';
-import { UserDashboardComponent } from './UserDashboard/app.UserDashboardComponent';
-import { UserLogoutComponent } from './Login/app.UserLogout.Component';
+import { UserDashboardComponent } from './UserDashboard/userDashboard.component';
+import { UserLogoutComponent } from './Login/userLogout.component';
 import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
-import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistration.component';
-import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.component';
-import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
 
-import { MemberRegistrationComponent } from './MemberRegistration/app.MemberRegistration.component';
-import { EditMemberRegistrationComponent } from './MemberRegistration/app.EditMemberRegistration.component';
+import { AllRoleComponent } from './Role/allRoles.component';
+import { CreateRoleComponent } from './Role/createRole.component';
+import { EditRoleComponent } from './Role/editRole.component';
+import { AssignRoleComponent } from './Role/assignRole.component';
+import { AllAssignRoleComponent } from './Role/allAssignRole.component';
 
-import { AllAssignRoleComponent } from './AssignRole/app.AllAssignRole.component';
-import { AssignRoleComponent } from './AssignRole/app.AssignRole.component';
- 
-import { AllRoleComponent } from './RoleMaster/app.AllRole.component';
-import { CreateRoleComponent } from './RoleMaster/createRole.component';
-import { EditRoleComponent } from './RoleMaster/app.EditRole.component';
+import { MemberRegistrationComponent } from './MemberRegistration/memberRegistration.component';
+import { EditMemberRegistrationComponent } from './MemberRegistration/editMemberRegistration.component';
 
 import { MemberDetailsReportComponent } from './Reports/app.MemberDetailsReport.Component';
 import { YearwiseReportComponent } from './Reports/app.YearwiseReport.Component';
@@ -49,19 +45,22 @@ import { MonthwiseReportComponent } from './Reports/app.MonthwiseReport.Componen
 import { RenewalReportComponent } from './Reports/app.RenewalReport.Component';
 import { GenerateRecepitComponent } from './Recepit/app.generateRecepit.Component';
 
-import { SchemeComponent } from './SchemeMasters/app.Scheme.Component';
-import { AllSchemeComponent } from './SchemeMasters/app.AllScheme.Component';
-import { EditSchemeComponent } from './SchemeMasters/app.EditScheme.Component';
-import { PlanMasterComponent } from './PlanMaster/app.planmaster.component';
-import { AllPlanMasterComponent } from './PlanMaster/app.allplanmaster.component';
-import { EditPlanComponent } from './PlanMaster/app.EditPlan.component';
+import { SchemeComponent } from './SchemeMasters/Scheme.Component';
+import { AllSchemeComponent } from './SchemeMasters/allScheme.component';
+import { EditSchemeComponent } from './SchemeMasters/editScheme.component';
+import { PlanMasterComponent } from './PlanMaster/planmaster.component';
+import { AllPlanMasterComponent } from './PlanMaster/allplanmaster.component';
+import { EditPlanComponent } from './PlanMaster/editPlan.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { UserRegistrationComponent } from './User/userRegistration.component';
+import { AllUserRegistrationComponent } from './User/allUserRegistration.component';
+import { EditUserComponent } from './User/editUser.component';
 
 @NgModule({
   declarations: [
     AppComponent, LoginComponent, NavMenuComponent,
     AppAdminLayoutComponent, AdminDashboardComponent, AdminLogoutComponent,
-    AppUserLayoutComponent, UserRegistrationComponent, UserLogoutComponent, UserDashboardComponent, AllUserRegistrationComponent, EditUserRegistrationComponent,
+    AppUserLayoutComponent, UserRegistrationComponent, UserLogoutComponent, UserDashboardComponent, AllUserRegistrationComponent, EditUserComponent,
     AllRoleComponent, CreateRoleComponent,  EditRoleComponent, AssignRoleComponent, AllAssignRoleComponent,
     MemberRegistrationComponent, MemberListComponent, MemberViewComponent, MemberDetailsReportComponent, EditMemberRegistrationComponent,
 

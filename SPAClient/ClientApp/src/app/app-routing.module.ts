@@ -2,40 +2,40 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppAdminLayoutComponent } from './_layout/app-adminlayout.component';
 import { AdminDashboardComponent } from './AdminDashboard/app.AdminDashboardComponent';
-import { AdminLogoutComponent } from './Login/app.AdminLogout.Component';
-import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
+import { PaymentOverviewComponent } from './Payment/List/paymentOverview.component';
 
-import { LoginComponent } from './Login/app.LoginComponent';
-import { UserLogoutComponent } from './Login/app.UserLogout.Component';
+import { AdminAuthGuardService } from './AuthGuard/AdminAuthGuardService';
+import { LoginComponent } from './Login/login.component';
+import { AdminLogoutComponent } from './Login/adminLogout.сomponent';
+import { UserLogoutComponent } from './Login/userLogout.component';
 import { UserAuthGuardService } from './AuthGuard/UserAuthGuardService';
 
 import { AppUserLayoutComponent } from './_layout/app-userlayout.component';
-import { UserDashboardComponent } from './UserDashboard/app.UserDashboardComponent';
-import { UserRegistrationComponent } from './CreateUsers/app.UserRegistration.component';
-import { AllUserRegistrationComponent } from './CreateUsers/app.AllUserRegistration.component';
-import { EditUserRegistrationComponent } from './CreateUsers/app.EditUserRegistration.component';
-import { AllRoleComponent } from './RoleMaster/app.AllRole.component';
-import { EditRoleComponent } from './RoleMaster/app.EditRole.component';
-import { AssignRoleComponent } from './AssignRole/app.AssignRole.component';
-import { CreateRoleComponent } from './RoleMaster/createRole.component';
+import { UserDashboardComponent } from './UserDashboard/userDashboard.component';
+ 
+import { AllRoleComponent } from './Role/allRoles.component';
+import { CreateRoleComponent } from './Role/createRole.component';
+import { EditRoleComponent } from './Role/editRole.component';
+import { AssignRoleComponent } from './Role/assignRole.component';
 
-import { MemberRegistrationComponent } from './MemberRegistration/app.MemberRegistration.component';
-import { EditMemberRegistrationComponent } from './MemberRegistration/app.EditMemberRegistration.component';
-import { MemberViewComponent } from './MemberRegistration/List/app.MemberViewComponent';
+import { MemberRegistrationComponent } from './MemberRegistration/memberRegistration.component';
+import { EditMemberRegistrationComponent } from './MemberRegistration/editMemberRegistration.component';
+import { MemberViewComponent } from './MemberRegistration/List/memberView.component';
 import { MemberDetailsReportComponent } from './Reports/app.MemberDetailsReport.Component';
-
-import { PaymentOverviewComponent } from './Payment/List/app.PaymentOverviewComponent';
-import { RenewalComponent } from './Renewal/app.Renewal.Component';
-import { SchemeComponent } from './SchemeMasters/app.Scheme.Component';
-import { AllSchemeComponent } from './SchemeMasters/app.AllScheme.Component';
-import { EditSchemeComponent } from './SchemeMasters/app.EditScheme.Component';
-import { PlanMasterComponent } from './PlanMaster/app.planmaster.component';
-import { AllPlanMasterComponent } from './PlanMaster/app.allplanmaster.component';
-import { EditPlanComponent } from './PlanMaster/app.EditPlan.component';
+import { RenewalComponent } from './Renewal/renewal.component';
+import { SchemeComponent } from './SchemeMasters/Scheme.Component';
+import { AllSchemeComponent } from './SchemeMasters/allScheme.component';
+import { EditSchemeComponent } from './SchemeMasters/editScheme.component';
+import { PlanMasterComponent } from './PlanMaster/planmaster.component';
+import { AllPlanMasterComponent } from './PlanMaster/allplanmaster.component';
+import { EditPlanComponent } from './PlanMaster/editPlan.component';
 import { YearwiseReportComponent } from './Reports/app.YearwiseReport.Component';
 import { MonthwiseReportComponent } from './Reports/app.MonthwiseReport.Component';
 import { RenewalReportComponent } from './Reports/app.RenewalReport.Component';
 import { GenerateRecepitComponent } from './Recepit/app.generateRecepit.Component';
+import { AllUserRegistrationComponent } from './User/allUserRegistration.component';
+import { UserRegistrationComponent } from './User/userRegistration.component';
+import { EditUserComponent } from './User/editUser.component';
 
 const routes: Routes = [
   { path: 'Login', component: LoginComponent },
@@ -56,7 +56,7 @@ const routes: Routes = [
       { path: 'Dashboard', component: AdminDashboardComponent, canActivate: [AdminAuthGuardService] },
       { path: 'AllUsers', component: AllUserRegistrationComponent, canActivate: [AdminAuthGuardService] },
       { path: 'AddUser', component: UserRegistrationComponent, canActivate: [AdminAuthGuardService] },
-      { path: 'EditUser/:UserId', component: EditUserRegistrationComponent }, //, canActivate: [AdminAuthGuardService] },
+      { path: 'EditUser/:UserId', component: EditUserComponent }, //, canActivate: [AdminAuthGuardService] },
       { path: 'AllRoles', component: AllRoleComponent, canActivate: [AdminAuthGuardService] },
       { path: 'AddRole', component: CreateRoleComponent, canActivate: [AdminAuthGuardService] },
       { path: 'EditRole/:RoleID', component: EditRoleComponent, canActivate: [AdminAuthGuardService] },

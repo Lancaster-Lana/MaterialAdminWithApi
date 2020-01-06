@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using System.Text;
 using AutoMapper;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,26 +8,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 using WebAdmin.Common;
-using WebAdmin.DAL;
+using WebAdmin.EF;
 using WebAdmin.Interfaces;
 using WebAdmin.Mappings;
 using WebAdmin.ViewModels;
+using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Logging;
 
 namespace WebAdmin
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -43,10 +41,18 @@ namespace WebAdmin
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            #region MyRegion
+            #region Authentication
 
             var connection = Configuration.GetConnectionString("DataConnection");
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection, b => b.UseRowNumberForPaging()));
+
+            services.AddDbContext<DatabaseContext>(options =>
+                    options.UseSqlServer(connection,
+                    sqlServerOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                        sqlOptions.MigrationsAssembly("WebAdmin.EF");
+                        sqlOptions.UseRowNumberForPaging();
+                    }));
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -74,6 +80,7 @@ namespace WebAdmin
             });
 
             services.AddSingleton<IConfiguration>(Configuration);
+            //services.AddSingleton(new DatabaseContext());
             services.AddTransient<ISchemeMaster, SchemeMasterConcrete>();
             services.AddTransient<IPlanMaster, PlanMasterConcrete>();
             services.AddTransient<IPeriodMaster, PeriodMasterConcrete>();
@@ -86,6 +93,7 @@ namespace WebAdmin
             services.AddTransient<IReports, ReportsMaster>();
             services.AddTransient<IGenerateRecepit, GenerateRecepitConcrete>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            //??
             services.AddScoped<IUrlHelper>(implementationFactory =>
             {
                 var actionContext = implementationFactory.GetService<IActionContextAccessor>().ActionContext;
@@ -98,73 +106,88 @@ namespace WebAdmin
             services.AddAutoMapper();
 
             // End Registering and Initializing AutoMapper
+            services.AddControllersWithViews(options => { options.EnableEndpointRouting = false; options.Filters.Add(typeof(CustomExceptionFilterAttribute)); })
+                .AddNewtonsoftJson()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddMvc(options => { options.Filters.Add(typeof(CustomExceptionFilterAttribute)); })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-            .AddJsonOptions(options =>
-            {
-                options.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
-            });
+           // services.AddCors();
+           
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .AllowCredentials()
+                        //.AllowCredentials() // ???
                         .WithExposedHeaders("X-Pagination"));
             });
 
-            services.AddSwaggerDocumentation();
-            #region OLD Working code for swagger configuration
-            //// Register the Swagger generator, defining 1 or more Swagger documents
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new Info { Title = "WebAdmin API", Version = "v1" });
-            //}); 
+            //services.AddSwaggerDocumentation();
+
+            #region OLD Working code for swagger configuration : Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAdmin API", Version = "v1" });
+            });
             #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, 
+            DatabaseContext context, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //Configure Swagger only for development purose not for production app.
-                app.UseSwaggerDocumentation();
+                //Configure Swagger only for development not for production app.
+                //app.UseSwaggerDocumentation();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            DBInitializer.Initialize(context);
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
 
-            app.UseCors("CorsPolicy");
             #region OLD Working code for Swagger Configuration
 
-            //// Enable middleware to serve generated Swagger as a JSON endpoint.
-            //app.UseSwagger();
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
 
-            //// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-            //// specifying the Swagger JSON endpoint.
-            //app.UseSwaggerUI(c =>
-            //{
-            //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAdmin API V1");
-            //    //Reference document: https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-2.2&tabs=visual-studio
-            //    //To serve the Swagger UI at the app's root (http://localhost:<port>/), set the RoutePrefix property to an empty string:
-            //    c.RoutePrefix = string.Empty;
-            //}); 
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAdmin API V1");
+                //Reference document: https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-2.2&tabs=visual-studio
+                //To serve the Swagger UI at the app's root (http://localhost:<port>/), set the RoutePrefix property to an empty string:
+                c.RoutePrefix = string.Empty;
+            });
+
             #endregion
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+
+            app.UseCors("CorsPolicy");
+            //app.UseCors(
+            //    options => options.SetIsOriginAllowed(x => _ = true)
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader()
+            //    .AllowCredentials()
+            //);
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
+                 //endpoints.MapControllerRoute(
+                 //               name: "default",
+                 //               pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
@@ -173,7 +196,7 @@ namespace WebAdmin
     /// Extension method or middleware for Swagger configuration in asp.net core for swagger version >2.0
     /// Reference From : https://ppolyzos.com/2017/10/30/add-jwt-bearer-authorization-to-swagger-and-asp-net-core/
     /// </summary>
-    public static class SwaggerServiceExtensions
+    /*public static class SwaggerServiceExtensions
     {
         public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
@@ -228,4 +251,5 @@ namespace WebAdmin
             return app;
         }
     }
+    */
 }

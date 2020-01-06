@@ -38,18 +38,13 @@ namespace WebAdmin.Controllers
 
         // POST: api/Scheme
         [HttpPost]
-        public HttpResponseMessage Post([FromBody] SchemeMasterViewModel schemeMaster)
+        public IActionResult Post([FromBody] SchemeMasterViewModel schemeMaster)
         {
             if (ModelState.IsValid)
             {
                 if (_schemeMaster.CheckSchemeNameExists(schemeMaster.SchemeName))
                 {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.Conflict
-                    };
-
-                    return response;
+                    return Conflict();
                 }
                 else
                 {
@@ -59,73 +54,45 @@ namespace WebAdmin.Controllers
                     tempSchemeMaster.CreatedDate = DateTime.Now;
                     tempSchemeMaster.CreatedBy = Convert.ToInt32(userId);
                     _schemeMaster.AddSchemeMaster(tempSchemeMaster);
-
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
-
-                    return response;
+                    return Ok();
                 }
             }
             else
             {
-                var response = new HttpResponseMessage()
-                {
-
-                    StatusCode = HttpStatusCode.BadRequest
-                };
-
-                return response;
+                return BadRequest();
             }
         }
 
         // PUT: api/Scheme/5
         [HttpPut("{id}")]
-        public HttpResponseMessage Put(int id, [FromBody] SchemeMasterEditViewModel schemeMaster)
+        public IActionResult Put(int id, [FromBody] SchemeMasterEditViewModel schemeMaster)
         {
             if (string.IsNullOrWhiteSpace(Convert.ToString(id)) || schemeMaster == null)
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.BadRequest
-                };
-                return response;
+                return BadRequest();
             }
             else
             {
                 var temp = AutoMapper.Mapper.Map<SchemeMaster>(schemeMaster);
                 var result = _schemeMaster.UpdateSchemeMaster(temp);
 
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.OK
-                };
-                return response;
+                return Ok(result);
             }
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public HttpResponseMessage Delete(int id)
+        public IActionResult Delete(int id)
         {
             var result = _schemeMaster.DeleteScheme(id);
 
             if (result)
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.OK
-                };
-                return response;
+                return Ok();
             }
             else
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.BadRequest
-                };
-                return response;
+                return BadRequest();
             }
         }
     }

@@ -1,0 +1,26 @@
+
+9/11/2019 11:14:33 AM
+------------------------------------------------------------------------------------------------
+Controller Name :- Payment
+Action Method Name :- GetAllPayment
+------------------------------------------------------------------------------------------------
+Microsoft.AspNetCore.Mvc.Filters.ExceptionContext
+Message ---
+{0}Could not load file or assembly 'System.Linq.Dynamic.Core, Version=1.0.19.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832'. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+Source ---
+{0}WebAdmin.DAL
+StackTrace ---
+{0}   at WebAdmin.DAL.PaymentDetailsConcrete.GetAll(QueryParameters queryParameters, Int32 userId)
+   at WebAdmin.Controllers.PaymentController.GetAllPayment(QueryParameters queryParameters) in F:\MY\GIT\A8+CoreApi-Admin\WebApi\WebAdmin.Api\Controllers\PaymentController.cs:line 38
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync()
+TargetSite ---
+{0}System.Linq.IQueryable`1[WebAdmin.ViewModels.PaymentDetailsViewModel] GetAll(WebAdmin.Entities.QueryParameters, Int32)
+

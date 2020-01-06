@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Core3Ang8": {
+    "AdminUI": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -60,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Core3Ang8:build"
+            "browserTarget": "AdminUI:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Core3Ang8:build:production"
+              "browserTarget": "AdminUI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Core3Ang8:build"
+            "browserTarget": "AdminUI:build"
           }
         },
         "test": {
@@ -130,7 +130,7 @@
         }
       }
     },
-    "Core3Ang8-e2e": {
+    "AdminUI-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -138,7 +138,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Core3Ang8:serve"
+            "devServerTarget": "AdminUI:serve"
           }
         },
         "lint": {
@@ -153,5 +153,5 @@
       }
     }
   },
-  "defaultProject": "Core3Ang8"
+  "defaultProject": "AdminUI"
 }

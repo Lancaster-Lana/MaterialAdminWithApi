@@ -20,7 +20,7 @@ namespace WebAdmin.Controllers
 
         // POST: api/RemoveRole
         [HttpPost]
-        public HttpResponseMessage Post([FromBody] UsersInRoles usersInRoles)
+        public IActionResult Post([FromBody] UsersInRoles usersInRoles)
         {
             if (ModelState.IsValid)
             {
@@ -30,12 +30,7 @@ namespace WebAdmin.Controllers
                     usersInRoles.UserRolesId = 0;
                     _usersInRoles.RemoveRole(usersInRoles);
 
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
-
-                    return response;
+                    return Ok();
                 }
                 else
                 {
@@ -44,19 +39,10 @@ namespace WebAdmin.Controllers
                         StatusCode = HttpStatusCode.Conflict
                     };
 
-                    return response;
+                    return Conflict();
                 }
             }
-            else
-            {
-                var response = new HttpResponseMessage()
-                {
-
-                    StatusCode = HttpStatusCode.BadRequest
-                };
-
-                return response;
-            }
+            return BadRequest();
         }
     }
 }

@@ -37,47 +37,33 @@ namespace WebAdmin.Controllers
 
         // POST: api/User
         [HttpPost]
-        public HttpResponseMessage Post([FromBody] UserViewModel user)
+        public IActionResult Post([FromBody] UserViewModel user)
         {
             if (ModelState.IsValid)
             {
                 if (_users.CheckUsersExits(user.UserName))
                 {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.Conflict
-                    };
-                    return response;
+                    return BadRequest();
                 }
                 else
                 {
                     var userId = this.User.FindFirstValue(ClaimTypes.Name);
-                    var tempUsers = AutoMapper.Mapper.Map<Users>(user);
-                    tempUsers.CreatedDate = DateTime.Now;
-                    tempUsers.CreatedBy = Convert.ToInt32(userId);
-                    tempUsers.Password = EncryptionLibrary.EncryptText(user.Password);
-                    _users.InsertUser(tempUsers);
+                    var tempUser = AutoMapper.Mapper.Map<Users>(user);
+                    tempUser.CreatedDate = DateTime.Now;
+                    tempUser.CreatedBy = Convert.ToInt32(userId);
+                    tempUser.Password = EncryptionLibrary.EncryptText(user.Password);
+                    _users.InsertUser(tempUser);
 
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
-                    return response;
+                    return Ok();
                 }
             }
-            else
-            {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.BadRequest
-                };
-                return response;
-            }
+
+            return BadRequest();
         }
 
-        // PUT: api/User/5
+        // PUT: api/User/userModel
         [HttpPut("{id}")]
-        public HttpResponseMessage Put(int id, [FromBody] UserViewModel user)
+        public IActionResult Put(int id, [FromBody] UserViewModel user)
         {
             if (ModelState.IsValid)
             {
@@ -89,44 +75,22 @@ namespace WebAdmin.Controllers
 
                 _users.UpdateUser(model);
 
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.OK
-                };
-                return response;
+                return Ok();
             }
-            else
-            {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.BadRequest
-                };
-                return response;
-            }
-        }
+           return BadRequest();           
+       }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/Role/5
         [HttpDelete("{id}")]
-        public HttpResponseMessage Delete(int id)
+        public IActionResult Delete(int id)
         {
             var result = _users.DeleteUsers(id);
 
             if (result)
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.OK
-                };
-                return response;
+                return Ok();
             }
-            else
-            {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.BadRequest
-                };
-                return response;
-            }
+            return BadRequest();
         }
     }
 }

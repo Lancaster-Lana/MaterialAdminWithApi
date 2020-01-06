@@ -34,17 +34,11 @@ namespace WebAdmin.Controllers
 
         // POST: api/Renewal
         [HttpPost]
-        public HttpResponseMessage Post([FromBody] RenewalViewModel renewalViewModel)
+        public IActionResult Post([FromBody] RenewalViewModel renewalViewModel)
         {
             if (_renewal.CheckRenewalPaymentExists(renewalViewModel.NewDate,renewalViewModel.MemberId))
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.BadRequest,
-                    ReasonPhrase = "Already Renewed"
-
-                };
-                return response;
+                return BadRequest("Already Renewed");//ReasonPhrase
             }
             else
             {
@@ -60,43 +54,20 @@ namespace WebAdmin.Controllers
                     renewalViewModel.Createdby = Convert.ToInt32(userId);
                     if (_paymentDetails.RenewalPayment(renewalViewModel))
                     {
-                        var response = new HttpResponseMessage()
-                        {
-                            StatusCode = HttpStatusCode.OK,
-                            ReasonPhrase = "Renewed Successfully"
-
-                        };
-                        return response;
+                        return Ok("Renewed Successfully");
                     }
                     else
                     {
-                        var response = new HttpResponseMessage()
-                        {
-                            StatusCode = HttpStatusCode.InternalServerError,
-                            ReasonPhrase = "Renewal Failed"
-
-                        };
-                        return response;
+                        return BadRequest( "Renewal Failed"); //HttpStatusCode.InternalServerError
                     }
                 }
 
                 if (cmp < 0)
                 {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.BadRequest,
-                        Content = new StringContent("Invalid Date")
-                    };
-                    return response;
+                    return BadRequest("Invalid Date");
                 }
             }
-
-            var responseMessage = new HttpResponseMessage()
-            {
-                StatusCode = HttpStatusCode.BadRequest,
-                Content = new StringContent("Something went wrong")
-            };
-            return responseMessage;
+            return BadRequest("Something went wrong");
         }
     }
 }

@@ -14,7 +14,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Core3Ang8": {
+    "AdminUI": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

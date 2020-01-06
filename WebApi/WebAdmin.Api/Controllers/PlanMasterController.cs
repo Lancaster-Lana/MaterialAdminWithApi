@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebAdmin.Interfaces;
 using WebAdmin.Entities;
 using WebAdmin.ViewModels;
+using Microsoft.AspNetCore.Http;
 
 namespace WebAdmin.Controllers
 {
@@ -44,17 +45,13 @@ namespace WebAdmin.Controllers
 
         // POST: api/PlanMaster
         [HttpPost]
-        public HttpResponseMessage Post([FromBody] PlanMasterViewModel planMasterViewModel)
+        public IActionResult Post([FromBody] PlanMasterViewModel planMasterViewModel)
         {
             try
             {
                 if (_planMaster.CheckPlanExits(planMasterViewModel.PlanName))
                 {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.Conflict
-                    };
-                    return response;
+                    return Conflict();
                 }
                 else
                 {
@@ -64,27 +61,18 @@ namespace WebAdmin.Controllers
                     tempplanMaster.RecStatus = true;
                     _planMaster.InsertPlan(tempplanMaster);
 
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
-
-                    return response;
+                    return Ok();
                 }
             }
             catch (Exception)
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.InternalServerError
-                };
-                return response;
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
         // PUT: api/PlanMaster/5
         [HttpPut("{id}")]
-        public HttpResponseMessage Put(int id, [FromBody] PlanMasterViewModel planMasterViewModel)
+        public IActionResult Put(int id, [FromBody] PlanMasterViewModel planMasterViewModel)
         {
             try
             {
@@ -98,39 +86,27 @@ namespace WebAdmin.Controllers
                     StatusCode = HttpStatusCode.OK
                 };
 
-                return response;
+                return Ok();
             }
             catch (Exception)
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.InternalServerError
-                };
-                return response;
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public HttpResponseMessage Delete(int id)
+        public IActionResult Delete(int id)
         {
             try
             { 
                 _planMaster.DeletePlan(id);
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.OK
-                };
 
-                return response;
+                return Ok();
             }
             catch (Exception)
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.InternalServerError
-                };
-                return response;
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
     }

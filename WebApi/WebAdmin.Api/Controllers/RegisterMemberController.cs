@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using WebAdmin.Interfaces;
 using WebAdmin.Entities;
 using WebAdmin.ViewModels;
+using Microsoft.AspNetCore.Http;
 
 namespace WebAdmin.Controllers
 {
@@ -60,7 +61,7 @@ namespace WebAdmin.Controllers
 
         // POST: api/RegisterMember
         [HttpPost]
-        public HttpResponseMessage Post([FromBody] MemberRegistrationViewModel member)
+        public IActionResult Post([FromBody] MemberRegistrationViewModel member)
         {
             try
             {
@@ -76,38 +77,13 @@ namespace WebAdmin.Controllers
                         var result = _memberRegistration.InsertMember(automember);
                         if (result > 0)
                         {
-                            var response = new HttpResponseMessage()
-                            {
-                                StatusCode = HttpStatusCode.OK
-                            };
-                            return response;
+                            return Ok();
                         }
-                        else
-                        {
-                            var response = new HttpResponseMessage()
-                            {
-                                StatusCode = HttpStatusCode.BadRequest
-                            };
-                            return response;
-                        }
+                        return BadRequest();
                     }
-                    else
-                    {
-                        var response = new HttpResponseMessage()
-                        {
-                            StatusCode = HttpStatusCode.Conflict
-                        };
-                        return response;
-                    }
+                    return Conflict();
                 }
-                else
-                {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.BadRequest
-                    };
-                    return response;
-                }
+                return BadRequest();
             }
             catch (Exception)
             {
@@ -117,7 +93,7 @@ namespace WebAdmin.Controllers
 
         // PUT: api/RegisterMember/5
         [HttpPut("{id}")]
-        public HttpResponseMessage Put(int id, [FromBody] MemberRegistrationViewModel member)
+        public IActionResult Put(int id, [FromBody] MemberRegistrationViewModel member)
         {
             if (ModelState.IsValid)
             {
@@ -126,47 +102,23 @@ namespace WebAdmin.Controllers
                 {
                     var automember = AutoMapper.Mapper.Map<MemberRegistration>(member);
                     automember.JoiningDate = DateTime.Now;
-                    
+
                     var result = _memberRegistration.UpdateMember(automember);
                     if (result > 0)
                     {
-                        var response = new HttpResponseMessage()
-                        {
-                            StatusCode = HttpStatusCode.OK
-                        };
-                        return response;
+
+                        return Ok();
                     }
-                    else
-                    {
-                        var response = new HttpResponseMessage()
-                        {
-                            StatusCode = HttpStatusCode.BadRequest
-                        };
-                        return response;
-                    }
+                    return BadRequest();
                 }
-                else
-                {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.Conflict
-                    };
-                    return response;
-                }
+                return Conflict();
             }
-            else
-            {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.BadRequest
-                };
-                return response;
-            }
+            return BadRequest();
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public HttpResponseMessage Delete(long id)
+        public IActionResult Delete(long id)
         {
             try
             {
@@ -174,28 +126,13 @@ namespace WebAdmin.Controllers
 
                 if (result)
                 {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
-                    return response;
+                    return Ok();
                 }
-                else
-                {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.BadRequest
-                    };
-                    return response;
-                }
+                return BadRequest();
             }
             catch (Exception)
             {
-                var response = new HttpResponseMessage()
-                {
-                    StatusCode = HttpStatusCode.InternalServerError
-                };
-                return response;
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
     }

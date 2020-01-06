@@ -32,15 +32,14 @@ namespace WebAdmin.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
-       
+
         // POST: api/UsersInRoles
         [HttpPost]
-        public HttpResponseMessage Post([FromBody] UsersInRoles usersInRoles)
+        public IActionResult Post([FromBody] UsersInRoles usersInRoles)
         {
             try
             {
@@ -48,37 +47,16 @@ namespace WebAdmin.Controllers
                 {
                     if (_usersInRoles.CheckRoleExists(usersInRoles))
                     {
-                        var response = new HttpResponseMessage()
-                        {
-                            StatusCode = HttpStatusCode.Conflict
-                        };
-
-                        return response;
+                        return Conflict();
                     }
-                    else
-                    {
 
-                        usersInRoles.UserRolesId = 0;
-                        _usersInRoles.AssignRole(usersInRoles);
-
-                        var response = new HttpResponseMessage()
-                        {
-                            StatusCode = HttpStatusCode.OK
-                        };
-
-                        return response;
-                    }
+                    usersInRoles.UserRolesId = 0;
+                    bool result = _usersInRoles.AssignRole(usersInRoles);
+                    return Ok(result);
                 }
-                else
-                {
-                    var response = new HttpResponseMessage()
-                    {
 
-                        StatusCode = HttpStatusCode.BadRequest
-                    };
+                return BadRequest();
 
-                    return response;
-                }
             }
             catch (Exception)
             {
@@ -86,8 +64,5 @@ namespace WebAdmin.Controllers
                 throw;
             }
         }
-
-
-
     }
 }
