@@ -7,3 +7,12 @@
 /WebApi/WebAdmin.EF/obj
 /WebApi/WebAdmin.Api/bin/Debug/netcoreapp2.2
 /WebApi/WebAdmin.Api/obj
+/WebApi/.vs/Admin.WebApi/v15/Server/sqlite3
+/WebApi/WebAdmin.Api/bin/Debug/netcoreapp3.0
+/WebApi/WebAdmin.EF/bin/Debug/netcoreapp3.0
+/WebApi/WebAdmin.Entities/bin/Debug
+/WebApi/WebAdmin.Interface/bin/Debug
+/WebApi/WebAdmin.Entities/obj/Debug
+/WebApi/WebAdmin.ViewModels/bin/Debug
+/WebApi/WebAdmin.Interface/obj/Debug
+/WebApi/.vs/Admin.WebApi/v15

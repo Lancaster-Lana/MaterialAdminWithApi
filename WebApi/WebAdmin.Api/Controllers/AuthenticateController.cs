@@ -59,14 +59,10 @@ namespace WebAdmin.Controllers
                             value.Usertype = userdetails.RoleId;
 
                             return Ok(value);
-
                         }
-                        else
-                        {
-                            value.Password = null;
-                            value.Usertype = 0;
-                            return Ok(value);
-                        }
+                        value.Password = null;
+                        value.Usertype = 0;
+                        return Ok(value);                        
                     }
                     value.Password = null;
                     value.Usertype = 0;
@@ -78,7 +74,6 @@ namespace WebAdmin.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

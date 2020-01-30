@@ -6,13 +6,7 @@ import { UserDropdownModel } from '../User/Models/userModel';
 import { UserService } from '../User/Services/userService';
 
 @Component({
-    templateUrl: './assignandRemoveRole.component.html',
-    styleUrls: [
-        //'../Content/vendor/bootstrap/css/bootstrap.min.css',
-        //'../Content/vendor/metisMenu/metisMenu.min.css',
-        //'../Content/dist/css/sb-admin-2.css',
-        //'../Content/vendor/font-awesome/css/font-awesome.min.css'
-    ]
+    templateUrl: './assignandRemoveRole.component.html'
 })
 export class AssignRoleComponent implements OnInit {
     UserList: UserDropdownModel[];

@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators'
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { RoleModel, AssignRemoveModel, AssignRolesViewModel } from '../Models/roleModel';
 import { environment } from '../../../environments/environment';
+import { AlertService } from '../../Shared/alert.service';
 
 const apiUrl = environment.apiEndpoint + "/api/Role/";
 
@@ -12,15 +13,15 @@ const apiUrl = environment.apiEndpoint + "/api/Role/";
 })
 export class RoleService {
 
-    private data: any;
+    data: any;
     token: any;
     username: any;
 
-  constructor(private http: HttpClient)
-  {
-      this.data = JSON.parse(localStorage.getItem('AdminUser'));
-      this.token = this.data.token;
-  }
+    constructor(private http: HttpClient, private alertService: AlertService)
+    {
+        this.data = JSON.parse(localStorage.getItem('AdminUser'));
+        this.token = this.data.token;
+    }
 
     public GetAllRoles() {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -53,7 +54,7 @@ export class RoleService {
         var putUrl = apiUrl + id;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.put(putUrl, rolemodel, { headers: headers })
+        return this.http.put<any>(putUrl, rolemodel, { headers: headers })
             .pipe(
                 catchError(this.handleError)
             );
@@ -102,11 +103,12 @@ export class RoleService {
     private handleError(error: HttpErrorResponse)
     {
         if (error.error instanceof ErrorEvent) {
-         
+            this.alertService.showErrorMessage(error.error.message);
             console.error('An error occurred:', error.error.message);
         } else {
-        
-            console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
+            let errorMsg = `Backend returned code ${error.status}, ` + `body was: ${error.error}`;
+            this.alertService.showErrorMessage(errorMsg);
+            console.error(errorMsg);
         }
    
         return throwError('Something bad happened; please try again later.');

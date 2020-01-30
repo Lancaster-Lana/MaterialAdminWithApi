@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using WebAdmin.Common;
@@ -73,9 +71,9 @@ namespace WebAdmin.Controllers
                 model.UserId = id;
                 model.CreatedDate = DateTime.Now;
 
-                _users.UpdateUser(model);
+                bool result =_users.UpdateUser(model);
 
-                return Ok();
+                return Ok(result);
             }
            return BadRequest();           
        }

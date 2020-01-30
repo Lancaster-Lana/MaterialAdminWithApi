@@ -72,6 +72,7 @@ namespace WebAdmin.EF
         public bool UpdateRole(Role role)
         {
             _context.Entry(role).Property(x => x.Status).IsModified = true;
+            _context.Entry(role).Property(x => x.RoleName).IsModified = true;
             var result = _context.SaveChanges();
             return result > 0;
         }

@@ -31,19 +31,16 @@ export class EditRoleComponent implements OnInit
   }
 
   onSubmit() {
-      this.roleService.UpdateRole(this.roleId, this.RoleModel).subscribe(
-      response => {
-        this.output = response;
-        if (this.output.StatusCode == "409") {
-          this.alertService.showWarningMessage('Role Already Exists');
-        }
-        else if (this.output.StatusCode == "200") {
-          this.alertService.showSuccessMessage('Role Saved Successfully');
-          this.router.navigate(['/Role/All']);
-        }
-        else {
-          this.alertService.showErrorMessage('Something Went Wrong');
-        }
+      this.roleService.UpdateRole(this.roleId, this.RoleModel).subscribe(response => {
+          if (response == true)//(this.output == null || this.output.StatusCode == "200")
+          {
+             this.alertService.showSuccessMessage('Role Saved Successfully');
+             this.router.navigate(['/Role/All']);
+          }
+          //else if (this.output.StatusCode == "409") {this.alertService.showWarningMessage('Role Already Exists');}
+          else {
+              this.alertService.showErrorMessage(response);// 'Something Went Wrong');
+          }
       });
    }
 }

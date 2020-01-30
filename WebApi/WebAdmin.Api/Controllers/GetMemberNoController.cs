@@ -34,6 +34,5 @@ namespace WebAdmin.Controllers
                 throw;
             }
         }
-
     }
 }

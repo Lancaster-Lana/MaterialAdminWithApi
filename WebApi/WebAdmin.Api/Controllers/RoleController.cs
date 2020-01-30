@@ -12,6 +12,7 @@ namespace WebAdmin.Controllers
 {
     //[Authorize]
     [Route("api/[controller]")]
+    [Produces("application/json")]
     [ApiController]
     public class RoleController : ControllerBase
     {
@@ -22,7 +23,8 @@ namespace WebAdmin.Controllers
             _role = role;
         }
 
-        // GET: api/CreateRole
+        // Lis of roles
+        // GET: api/Role
         [HttpGet]
         public IEnumerable<Role> Get()
         {
@@ -38,7 +40,7 @@ namespace WebAdmin.Controllers
         }
 
         // GET: api/Role/5
-        [HttpGet("{id}")]//, Name = "GetRole")]
+        [HttpGet("{id}")]
         public Role Get(int id)
         {
             try
@@ -47,7 +49,6 @@ namespace WebAdmin.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -91,7 +92,8 @@ namespace WebAdmin.Controllers
             try
             {
                 var temprole = AutoMapper.Mapper.Map<Role>(roleViewModel);
-                return Ok(_role.UpdateRole(temprole));
+                bool result = _role.UpdateRole(temprole);
+                return Ok(result);
             }
             catch (Exception ex)
             {

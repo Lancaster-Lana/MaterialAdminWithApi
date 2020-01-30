@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { UserModel } from './Models/userModel';
 import { UserService } from './Services/userService';
+import { AlertService } from '../Shared/alert.service';
 
 const editUserUrl: string = '/Admin/EditUser/';
 
@@ -25,10 +26,11 @@ export class AllUserRegistrationComponent implements OnInit
   dataSource: any;
 
   constructor(
-    private location: Location,
-    private router: Router,
-    private userService: UserService,
-    public dialog: MatDialog)
+      private location: Location,
+      private router: Router,
+      private userService: UserService,
+      public dialog: MatDialog,
+      private alertService: AlertService)
   {
   }
 
@@ -71,8 +73,8 @@ export class AllUserRegistrationComponent implements OnInit
               location.reload();
             }
             else {
-              alert('Something Went Wrong');
-              this.router.navigate(['/AllSchemeMaster']);
+                this.alertService.showWarningMessage('Something Went Wrong');
+                this.router.navigate(['/AllSchemeMaster']);
             }
           }
         )
