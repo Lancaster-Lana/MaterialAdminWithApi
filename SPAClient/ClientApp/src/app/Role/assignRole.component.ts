@@ -21,9 +21,8 @@ export class AssignRoleComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.userservice.GetAllUsersDropdown().subscribe(
-            allUsers => {
-                this.UserList = allUsers
+        this.userservice.GetAllUsersDropdown().subscribe(allUsers => {
+                this.UserList = allUsers;
             },
             error => this.errorMessage = <any>error
         );

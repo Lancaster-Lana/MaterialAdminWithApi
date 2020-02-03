@@ -16,13 +16,13 @@ export class EditRoleComponent implements OnInit
 
   constructor(
       private router: Router,
-      private _routeParams: ActivatedRoute,
+      private routeParams: ActivatedRoute,
       private roleService: RoleService,
       private alertService: AlertService) {
   }
 
   ngOnInit() {
-    this.roleId = this._routeParams.snapshot.params['RoleID'];
+    this.roleId = this.routeParams.snapshot.params['RoleID'];
 
     this.roleService.GetRoleById(this.roleId).subscribe(roleModel => {
           this.RoleModel = roleModel;
@@ -35,7 +35,7 @@ export class EditRoleComponent implements OnInit
           if (response == true)//(this.output == null || this.output.StatusCode == "200")
           {
              this.alertService.showSuccessMessage('Role Saved Successfully');
-             this.router.navigate(['/Role/All']);
+              this.router.navigate(['/Admin/AllRoles']);
           }
           //else if (this.output.StatusCode == "409") {this.alertService.showWarningMessage('Role Already Exists');}
           else {
