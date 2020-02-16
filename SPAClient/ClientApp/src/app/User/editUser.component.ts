@@ -31,7 +31,7 @@ export class EditUserComponent implements OnInit {
     onSubmit() {
 
         this.userService.UpdateUser(this.Id, this.UserModel).subscribe(response => {
-            if (response == null || response.StatusCode == "200") {
+            if (response == true || response.StatusCode == "200") {
                 this.alertService.showStickyMessage('User updated successfully !');
                 this.router.navigate(['/Admin/AllUsers']);
             }

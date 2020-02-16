@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject, Inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs'
 import { catchError, tap } from 'rxjs/operators'
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
@@ -17,7 +17,7 @@ export class RoleService {
     token: any;
     username: any;
 
-    constructor(private http: HttpClient, private alertService: AlertService)
+    constructor(private http: HttpClient, @Inject(AlertService) private alertService)
     {
         this.data = JSON.parse(localStorage.getItem('AdminUser'));
         this.token = this.data.token;

@@ -3,21 +3,15 @@ import { Router } from '@angular/router';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { RoleService } from './Services/roleService';
 import { RoleModel } from './Models/roleModel';
+import { AlertService } from '../Shared/alert.service';
 
 const editRoleUrl: string = '/Admin/EditRole/';
 
 @Component({
-    templateUrl: './allRoles.component..html',
-    styleUrls: [
-        //'../Content/vendor/bootstrap/css/bootstrap.min.css',
-        //'../Content/vendor/metisMenu/metisMenu.min.css',
-        //'../Content/dist/css/sb-admin-2.css',
-        //'../Content/vendor/font-awesome/css/font-awesome.min.css'
-    ]
+    templateUrl: './allRoles.component..html'
 })
-export class AllRoleComponent implements OnInit
-{
-    RoleList: RoleModel[];// = new RoleModel();
+export class AllRoleComponent implements OnInit {
+    RoleList: RoleModel[];
     output: any;
     errorMessage: any;
 
@@ -30,11 +24,10 @@ export class AllRoleComponent implements OnInit
     displayedColumns: string[] = ['RoleId', 'RoleName', 'Status', 'EditAction', 'DeleteAction'];
     dataSource: any;
 
-    constructor(private router: Router, private roleService: RoleService) { }
+    constructor(private router: Router, private roleService: RoleService, private alertService: AlertService) { }
 
     ngOnInit(): void {
-        this.roleService.GetAllRoles().subscribe(
-            allroles => {
+        this.roleService.GetAllRoles().subscribe(allroles => {
                 this.RoleList = allroles;
                 this.dataSource = new MatTableDataSource(allroles);
                 this.dataSource.sort = this.sort;
@@ -56,16 +49,15 @@ export class AllRoleComponent implements OnInit
 
         if (confirm("Are you sure to delete the role ?")) {
             this.roleService.DeleteRole(roleId).subscribe(response => {
-                        if (response.StatusCode == "200") {
-                            alert('Deleted Role Successfully');
-                            location.reload();
-                        }
-                        else {
-                            alert('Something Went Wrong');
-                            this.router.navigate(['/Role/All']);
-                        }
-                    }
-                )
+                if (response == null || response == true || response.StatusCode == "200") {
+                    this.alertService.showSuccessMessage('Role deleted successfully');
+                    location.reload();
+                }
+                else {
+                    this.alertService.showErrorMessage('Role deletion error');
+                    this.router.navigate(['/Admin/AllRoles']);
+                }
+            });
         }
     }
 }

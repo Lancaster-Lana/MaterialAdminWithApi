@@ -71,17 +71,14 @@ namespace WebAdmin.Controllers
 
                         _role.InsertRole(temprole);
 
-                        return Ok();
+                        return Ok(true);
                     }
                 }
-                else
-                {
-                    return BadRequest();
-                }
+                return BadRequest();         
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return BadRequest(ex.Message);
             }
         }
 
@@ -107,22 +104,12 @@ namespace WebAdmin.Controllers
         {
             try
             {
-                var result = _role.DeleteRole(id);
-
-                if (result)
-                {
-                    var response = new HttpResponseMessage()
-                    {
-                        StatusCode = HttpStatusCode.OK
-                    };
-                    return Ok();
-                }
-
-                return BadRequest();
+                bool result = _role.DeleteRole(id);
+                return Ok(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return BadRequest(ex.Message);
             }
         }
     }

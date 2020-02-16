@@ -12,7 +12,6 @@ export class EditRoleComponent implements OnInit
   roleId: number;
   RoleModel: RoleModel = new RoleModel();
   errorMessage: any;
-  output: any;
 
   constructor(
       private router: Router,
@@ -32,15 +31,19 @@ export class EditRoleComponent implements OnInit
 
   onSubmit() {
       this.roleService.UpdateRole(this.roleId, this.RoleModel).subscribe(response => {
-          if (response == true)//(this.output == null || this.output.StatusCode == "200")
+          if (response == true || response.StatusCode == "200")
           {
              this.alertService.showSuccessMessage('Role Saved Successfully');
-              this.router.navigate(['/Admin/AllRoles']);
+             this.router.navigate(['/Admin/AllRoles']);
           }
-          //else if (this.output.StatusCode == "409") {this.alertService.showWarningMessage('Role Already Exists');}
+          else if (response.StatusCode == "409")
+          {
+              this.alertService.showWarningMessage('Role Already Exists');
+          }
           else {
               this.alertService.showErrorMessage(response);// 'Something Went Wrong');
           }
-      });
+      },
+        error => this.errorMessage = <any>error);
    }
 }
