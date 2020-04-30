@@ -32,7 +32,7 @@
     "ngx-bootstrap": "^5.1.1",
     "core-js": "^3.2.0",
     "html2canvas": "^1.0.0-rc.3",
-    "jquery": "~3.4.1",
+    "jquery": "~3.5.0",
     "jspdf": "^1.5.2",
     "oidc-client": "^1.7.1",
     "perfect-scrollbar": "1.1.0",
