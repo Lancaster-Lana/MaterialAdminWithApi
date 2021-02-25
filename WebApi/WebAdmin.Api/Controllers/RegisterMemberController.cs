@@ -72,7 +72,7 @@ namespace WebAdmin.Controllers
                         var userId = this.User.FindFirstValue(ClaimTypes.Name);
                         var automember = AutoMapper.Mapper.Map<MemberRegistration>(member);
                         automember.JoiningDate = DateTime.Now;
-                        automember.Createdby = Convert.ToInt32(userId);
+                        automember.CreatedBy = Convert.ToInt32(userId);
 
                         var result = _memberRegistration.InsertMember(automember);
                         if (result > 0)

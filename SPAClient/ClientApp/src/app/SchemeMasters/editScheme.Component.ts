@@ -5,7 +5,7 @@ import { SchemeMasterModel } from './Models/scheme.model';
  
 
 @Component({
-    templateUrl: './editScheme.component.html'
+    templateUrl: 'editScheme.component.html'
 })
 export class EditSchemeComponent implements OnInit {
     title = "Edit Scheme Master";

@@ -2,17 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginModel } from './Models/app.LoginModel';
 import { LoginService } from './Services/app.LoginService';
-import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Component({
   templateUrl: './login.html'
 })
-export class LoginComponent implements OnInit {
-  ngOnInit(): void {
-    localStorage.clear();
-  }
+export class LoginComponent implements OnInit
+{
   output: any;
-
+  LoginModel: LoginModel = new LoginModel();
   actionButtonLabel: string = 'Retry';
   action: boolean = false;
   setAutoHide: boolean = true;
@@ -22,7 +20,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router, public snackBar: MatSnackBar, private loginService: LoginService) { }
 
-  LoginModel: LoginModel = new LoginModel();
+  ngOnInit()
+  {
+    localStorage.clear();
+  }
 
   onSubmit() {
     this.loginService.validateLoginUser(this.LoginModel)

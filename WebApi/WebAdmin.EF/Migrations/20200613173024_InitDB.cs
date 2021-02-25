@@ -24,8 +24,10 @@ namespace WebAdmin.EF.Migrations
                     Gender = table.Column<string>(nullable: true),
                     PlanID = table.Column<int>(nullable: true),
                     SchemeID = table.Column<int>(nullable: true),
-                    Createdby = table.Column<long>(nullable: true),
+                    CreatedBy = table.Column<int>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedBy = table.Column<long>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
                     JoiningDate = table.Column<DateTime>(nullable: false),
                     Address = table.Column<string>(nullable: false),
                     MainMemberId = table.Column<long>(nullable: true),
@@ -145,6 +147,8 @@ namespace WebAdmin.EF.Migrations
                     Password = table.Column<string>(nullable: true),
                     CreatedBy = table.Column<int>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: true),
+                    ModifiedBy = table.Column<long>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
                     Status = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>

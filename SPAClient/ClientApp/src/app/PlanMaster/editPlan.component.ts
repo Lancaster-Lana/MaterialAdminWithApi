@@ -21,7 +21,6 @@ export class EditPlanComponent implements OnInit {
     PlanID: any;
     output: any;
 
-
     constructor(private _Route: Router, private _routeParams: ActivatedRoute, private periodService: PeriodService, private schemeService: SchemeService, private planService: PlanService) {
         this._periodService = periodService;
         this._schemeService = schemeService;

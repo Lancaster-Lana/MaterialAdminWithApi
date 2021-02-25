@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpResponseBase } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
-
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Utilities } from './utilities';
 
 @Injectable({ providedIn: 'root' })
@@ -20,12 +19,6 @@ export class AlertService {
   //Show Toars message
   public showSuccessMessage(message: string) {
     this.snackBar.open(message, 'ok', this.configSucces);
-
-    //this.snackBar.open(message, action, {
-    //  duration: 40000,
-    //  panelClass: "success-dialog"
-    //});
-
   }
 
   public showWarningMessage(message: string) {

@@ -10,8 +10,8 @@ using WebAdmin.EF;
 namespace WebAdmin.EF.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20191222180747_InitDB")]
-    partial class InitDB
+    [Migration("20200613173042_SeedDB")]
+    partial class SeedDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,8 +40,11 @@ namespace WebAdmin.EF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("Createdby")
-                        .HasColumnType("bigint");
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("Dob")
                         .IsRequired()
@@ -84,6 +87,9 @@ namespace WebAdmin.EF.Migrations
 
                     b.Property<long?>("ModifiedBy")
                         .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("PlanID")
                         .HasColumnType("int");
@@ -284,6 +290,12 @@ namespace WebAdmin.EF.Migrations
 
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("ModifiedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");

@@ -24,8 +24,8 @@
               <fieldset>
                 <div class="form-group">
                   <label for="name">Username</label>
-                  <input autofocus type="text" class="form-control" name="Username" [(ngModel)]="LoginModel.Username" maxlength="50"
-                         #refUsername="ngModel" id="Username" required>
+                  <input autofocus type="text" class="form-control" name="Username" id="Username" maxlength="50" required
+                         [(ngModel)]="LoginModel.Username" #refUsername="ngModel" >
                   <div *ngIf="!refUsername.valid  && (refUsername.dirty || refUsername.touched)" class="alert alert-danger">
                     <div [hidden]="!refUsername.errors.required">
                       Username is required
@@ -34,8 +34,8 @@
                 </div>
                 <div class="form-group">
                   <label for="name">Password</label>
-                  <input autofocus type="password" class="form-control" name="Password" [(ngModel)]="LoginModel.Password" maxlength="50"
-                         #refPassword="ngModel" id="Password" required>
+                  <input autofocus type="password" class="form-control" name="Password" id="Password" maxlength="50" required
+                         [(ngModel)]="LoginModel.Password" #refPassword="ngModel">
                   <div *ngIf="!refPassword.valid  && (refPassword.dirty || refPassword.touched)" class="alert alert-danger">
                     <div [hidden]="!refPassword.errors.required">
                       Password is required
@@ -51,7 +51,5 @@
       </div>
     </div>
   </div>
-
 </body>
-
 </html>

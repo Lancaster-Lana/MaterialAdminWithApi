@@ -29,8 +29,7 @@ export class MemberRegistrationService {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         let Url = environment.apiEndpoint + "/api/RegisterMember";
-        const mergedUrl = `${Url}` +
-            `?page=${this.paginationService.page}&pageCount=${this.paginationService.pageCount}`;
+        const mergedUrl = `${Url}` + `?page=${this.paginationService.page}&pageCount=${this.paginationService.pageCount}`;
 
         return this.http.get<T>(mergedUrl, { headers: headers, observe: 'response' }).pipe(
             catchError(this.handleError)
@@ -94,7 +93,6 @@ export class MemberRegistrationService {
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.get<SchemeDropdownModel[]>(url, { headers: headers }).pipe(tap(data => data),
             catchError(this.handleError)
-
         );
     }
 

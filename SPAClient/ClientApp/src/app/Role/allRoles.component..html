@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="example-header">
+    <div class="btn-group">
       <a class="nav-link" [routerLink]="['/Admin/AddRole']"><i class="fa fa-plus fa-fw"></i>Add Role</a>
       <a class="nav-link" [routerLink]="['/Admin/AssignRole']"><i class="fa fa-plus fa-fw"></i>Assign Role</a>
       <!--<mat-form-field>
@@ -32,7 +32,7 @@
         <ng-container matColumnDef="EditAction">
           <th mat-header-cell *matHeaderCellDef> Edit </th>
           <td mat-cell *matCellDef="let element">
-            <button (click)="EditRole(element.roleId)"><i class="fa fa-edit"></i> Edit</button>
+            <button class="btn-sm btn-info" (click)="EditRole(element.roleId)"><i class="fa fa-edit"></i></button>
             <!--<a [routerLink]="['/Role/Edit/',element.roleId]"><i class="fa fa-edit fa-fw"></i> Edit</a>-->
           </td>
         </ng-container>
@@ -40,7 +40,7 @@
         <ng-container matColumnDef="DeleteAction">
           <th mat-header-cell *matHeaderCellDef> Delete </th>
           <td mat-cell *matCellDef="let element">
-            <button class="btn btn-danger" (click)="Delete(element.roleId)"><i class="fa fa-trash"></i>Delete</button>
+            <button class="btn-sm btn-danger" (click)="Delete(element.roleId)"><i class="fa fa-trash"></i></button>
           </td>
         </ng-container>
 

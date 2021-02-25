@@ -3,13 +3,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { MatSortModule, MatPaginatorModule, MatFormFieldModule, MatInputModule, MatSnackBar, MatSnackBarConfig, MatSnackBarModule, MatDialog, MatDialogModule } from '@angular/material';
 import { FormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router';
 import { RoutingConfig } from './app-routing.module';
 import { BsDatepickerModule, } from 'ngx-bootstrap/datepicker';
 import { MatTableModule } from '@angular/material/table';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MatSnackBar, MatSnackBarConfig, MatSnackBarModule
+} from '@angular/material/snack-bar';
+
 
 import { MemberListComponent } from './MemberRegistration/List/memberList.component ';
 import { MemberViewComponent } from './MemberRegistration/List/memberView.component';

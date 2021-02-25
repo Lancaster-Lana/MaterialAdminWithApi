@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { AlertService } from '../Shared/alert.service';
-
 import { UserModel } from './Models/userModel';
 import { UserService } from './Services/userService';
 

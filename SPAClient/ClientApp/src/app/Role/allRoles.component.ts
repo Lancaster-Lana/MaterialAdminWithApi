@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { RoleService } from './Services/roleService';
 import { RoleModel } from './Models/roleModel';
 import { AlertService } from '../Shared/alert.service';
@@ -8,7 +10,7 @@ import { AlertService } from '../Shared/alert.service';
 const editRoleUrl: string = '/Admin/EditRole/';
 
 @Component({
-    templateUrl: './allRoles.component..html'
+    templateUrl: 'allRoles.component..html'
 })
 export class AllRoleComponent implements OnInit {
     RoleList: RoleModel[];

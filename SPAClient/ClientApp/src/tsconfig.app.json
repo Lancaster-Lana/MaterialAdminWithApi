@@ -2,10 +2,11 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "types": ["node"]
+    "types": [ "node" ]
   },
   "angularCompilerOptions": {
-    "enableIvy": true
+    "enableIvy": true,
+    "allowEmptyCodegenFiles": true
   },
   "exclude": [
     "src/test.ts",

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAdmin.Interfaces;
 using WebAdmin.Entities;
@@ -88,8 +85,15 @@ namespace WebAdmin.Controllers
         {
             try
             {
-                var temprole = AutoMapper.Mapper.Map<Role>(roleViewModel);
-                bool result = _role.UpdateRole(temprole);
+                var existingRole = _role.GetRolebyId(id);
+
+                //check if other role with the same name exist
+                if (existingRole.RoleName != roleViewModel.RoleName && _role.CheckRoleExits(roleViewModel.RoleName))
+                    return Conflict("The same role name already exists.");
+
+                var tempRole = AutoMapper.Mapper.Map<Role>(roleViewModel);
+                bool result = _role.UpdateRole(tempRole);
+
                 return Ok(result);
             }
             catch (Exception ex)

@@ -34,7 +34,6 @@ export class LoginService {
                     // return true to indicate successful login
                     return data;
                 } else {
-                    // return false to indicate failed login
                     return null;
                 }
             }),

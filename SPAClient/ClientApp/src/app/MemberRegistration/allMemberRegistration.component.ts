@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, Input, EventEmitter, Output, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { MemberRegistrationService } from './Services/memberRegistration.Service';
 import { MemberRegistrationGridModel } from './Models/memberRegistrationGrid.model';
 import { PaginationService } from '../Shared/PaginationService';

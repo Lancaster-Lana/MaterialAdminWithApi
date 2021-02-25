@@ -41,4 +41,8 @@
     <ProjectReference Include="..\WebAdmin.ViewModels\WebAdmin.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\ErrorLog\" />
+  </ItemGroup>
+
 </Project>

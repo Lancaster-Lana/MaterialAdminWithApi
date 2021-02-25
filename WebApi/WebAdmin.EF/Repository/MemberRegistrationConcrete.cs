@@ -103,7 +103,7 @@ namespace WebAdmin.EF
                 para.Add("@Gender", memberRegistration.Gender);
                 para.Add("@PlanID", memberRegistration.PlanID);
                 para.Add("@SchemeID", memberRegistration.SchemeID);
-                para.Add("@Createdby", memberRegistration.Createdby);
+                para.Add("@Createdby", memberRegistration.CreatedBy);
                 para.Add("@JoiningDate", memberRegistration.JoiningDate);
                 para.Add("@ModifiedBy", 0);
                 para.Add("@MemIDOUT", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -117,8 +117,8 @@ namespace WebAdmin.EF
                 paramater.Add("@Paymenttype", "Cash");
                 paramater.Add("@PaymentFromdt", memberRegistration.JoiningDate);
                 paramater.Add("@PaymentAmount", memberRegistration.Amount);
-                paramater.Add("@CreateUserID", memberRegistration.Createdby);
-                paramater.Add("@ModifyUserID", memberRegistration.Createdby);
+                paramater.Add("@CreateUserID", memberRegistration.CreatedBy);
+                paramater.Add("@ModifyUserID", memberRegistration.CreatedBy);
                 paramater.Add("@RecStatus", "A");
                 paramater.Add("@MemberID", memberId);
                 paramater.Add("@PaymentIDOUT", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -173,7 +173,7 @@ namespace WebAdmin.EF
         public IQueryable<MemberRegistrationGridModel> GetAll(QueryParameters queryParameters , int userId)
         {
             IQueryable<MemberRegistrationGridModel> allItems = (from member in _context.MemberRegistration
-                                                                where member.Createdby == userId
+                                                                where member.CreatedBy == userId
                                                                 join plan in _context.PlanMaster on member.PlanID equals plan.PlanID
                                                                 join scheme in _context.SchemeMaster on member.SchemeID equals scheme.SchemeID
                                                                 select new MemberRegistrationGridModel()
@@ -203,7 +203,7 @@ namespace WebAdmin.EF
         public int Count(int userId)
         {
             var membercount = (from payment in _context.MemberRegistration
-                            where payment.Createdby == userId
+                            where payment.CreatedBy == userId
                 select payment).Count();
             return membercount;
         }
@@ -211,7 +211,7 @@ namespace WebAdmin.EF
         public List<MemberResponse> GetMemberNoList(string membername, int userId)
         {
             var membernoList = (from member in _context.MemberRegistration
-                                where member.MemberFName.Contains(membername) && member.Createdby == userId
+                                where member.MemberFName.Contains(membername) && member.CreatedBy == userId
                                 select new MemberResponse
                                 {
                                     MemberNo = member.MemberNo,

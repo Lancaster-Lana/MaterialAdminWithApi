@@ -22,7 +22,7 @@ namespace WebAdmin.EF
         {
             var membernoList = (from member in _context.MemberRegistration
                                 join payment in _context.PaymentDetails on member.MemberId equals payment.MemberID
-                                where member.MemberNo == memberNo && member.Createdby == userid
+                                where member.MemberNo == memberNo && member.CreatedBy == userid
                                 select new RenewalViewModel
                                 {
                                     MemberNo = member.MemberNo,

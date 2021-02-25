@@ -1,11 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatTableDataSource, MatSort, MatPaginator, PageEvent } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+
 import { RoleService } from './Services/roleService';
 import { AssignRolesViewModel } from './Models/roleModel';
 
 @Component({
-    templateUrl: './allAssignedRoles.component.html'
+    templateUrl: 'allAssignedRoles.component.html'
 })
 export class AllAssignRoleComponent implements OnInit {
 

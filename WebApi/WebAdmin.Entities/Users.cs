@@ -16,6 +16,9 @@ namespace WebAdmin.Entities
         public string Password { get; set; }
         public int? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
+
+        public long? ModifiedBy { get; set; }
+        public DateTime? ModifiedDate { get; set; }
         public bool Status { get; set; }
     }
 }

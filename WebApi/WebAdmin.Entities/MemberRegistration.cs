@@ -42,9 +42,12 @@ namespace WebAdmin.Entities
         [DisplayName("Workouttype")]
         public int? SchemeID { get; set; }
 
-        public long? Createdby { get; set; }
+        public int? CreatedBy { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         public long? ModifiedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
 
         [DisplayName("Joining Date")]
         [Required(ErrorMessage = "Please select Joining Date")]
