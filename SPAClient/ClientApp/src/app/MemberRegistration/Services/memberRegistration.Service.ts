@@ -38,20 +38,20 @@ export class MemberRegistrationService {
 
     public SaveMember(memberModel: MemberRegistrationModel)
     {
-        var SaveUrl = environment.apiEndpoint +"/api/RegisterMember";
+        let SaveUrl = environment.apiEndpoint +"/api/RegisterMember";
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.post<any>(SaveUrl, memberModel, { headers: headers })
+        return this.http.post(SaveUrl, memberModel, { headers: headers })
             .pipe(
                 catchError(this.handleError)
             );
     }
 
     public UpdateMember(memberModel: MemberRegistrationModel) {
-        var updateUrl = environment.apiEndpoint +"/api/RegisterMember/" + memberModel.MemberId;
+        let updateUrl = environment.apiEndpoint +"/api/RegisterMember/" + memberModel.MemberId;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.put<any>(updateUrl, memberModel, { headers: headers })
+        return this.http.put(updateUrl, memberModel, { headers: headers })
             .pipe(
                 catchError(this.handleError)
             );
@@ -59,7 +59,7 @@ export class MemberRegistrationService {
 
     public GetAllMember()
     {
-        var getUrl = environment.apiEndpoint +"/api/RegisterMember";
+        let getUrl = environment.apiEndpoint +"/api/RegisterMember";
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.get<MemberRegistrationGridModel[]>(this.apiUrl, { headers: headers }).pipe(tap(data => data),
@@ -69,7 +69,7 @@ export class MemberRegistrationService {
 
     public GetMemberById(MemberId) {
         console.log(MemberId);
-        var editUrl = environment.apiEndpoint +"/api/RegisterMember"+ '/' + MemberId;
+        let editUrl = environment.apiEndpoint +"/api/RegisterMember"+ '/' + MemberId;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.get<MemberRegistrationModel>(editUrl, { headers: headers }).pipe(tap(data => data),
@@ -78,7 +78,7 @@ export class MemberRegistrationService {
     }
 
     public DeleteMember(MemberId) {
-        var deleteUrl = environment.apiEndpoint +"/api/RegisterMember"+ '/' + MemberId;
+        let deleteUrl = environment.apiEndpoint +"/api/RegisterMember"+ '/' + MemberId;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.delete<any>(deleteUrl, { headers: headers })
@@ -88,7 +88,7 @@ export class MemberRegistrationService {
     }
 
     public GetAllActiveSchemeList() {
-        var url = environment.apiEndpoint + "/api/SchemeDropdown/";
+        let url = environment.apiEndpoint + "/api/SchemeDropdown/";
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.get<SchemeDropdownModel[]>(url, { headers: headers }).pipe(tap(data => data),
@@ -97,7 +97,7 @@ export class MemberRegistrationService {
     }
 
     public GetAllActivePlans(schemeId) {
-        var url = environment.apiEndpoint + "/api/AllActivePlanMaster" + '/' + schemeId;;
+        let url = environment.apiEndpoint + "/api/AllActivePlanMaster" + '/' + schemeId;;
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
         return this.http.get<ActivePlanModel[]>(url, { headers: headers }).pipe(tap(data => data),
@@ -106,12 +106,12 @@ export class MemberRegistrationService {
     }
 
     public GetAmount(planID: number, schemeId: number) {
-        var url = environment.apiEndpoint + "/api/GetTotalAmount/";
-        let AmountRequest = { "PlanId": planID, "SchemeId": schemeId };
+        let url = environment.apiEndpoint + "/api/GetTotalAmount/";
+        let amountRequest = { "PlanId": planID, "SchemeId": schemeId };
 
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers = headers.append('Authorization', 'Bearer ' + `${this.token}`);
-        return this.http.post<string>(url, AmountRequest, { headers: headers })
+        return this.http.post<string>(url, amountRequest, { headers: headers })
             .pipe(
                 catchError(this.handleError)
             );

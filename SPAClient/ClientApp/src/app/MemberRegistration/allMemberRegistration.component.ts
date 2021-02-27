@@ -8,7 +8,7 @@ import { MemberRegistrationGridModel } from './Models/memberRegistrationGrid.mod
 import { PaginationService } from '../Shared/PaginationService';
 
 @Component({
-    templateUrl: './allMemberRegistration.component.html'
+    templateUrl: 'allMemberRegistration.component.html'
 })
 export class AllMemberRegistration implements OnInit
 {

@@ -13,8 +13,6 @@ export class MemberListComponent {
   dataSource = new MatTableDataSource<MemberRegistrationModel>();
   displayedColumns: string[] = ['MemberId', 'MemberNo', 'MemberName', 'Contactno', 'PlanName', 'SchemeName', 'JoiningDate', 'EditAction', 'DeleteAction'];
 
-  _Route: any;
-
   @Input('dataSource')
   set dataSourceForTable(value: MemberRegistrationModel[]) {
     this.dataSource = new MatTableDataSource<MemberRegistrationModel>(value);
@@ -23,7 +21,7 @@ export class MemberListComponent {
   @Input() totalCount: number;
   @Output() onPageSwitch = new EventEmitter();
 
-  constructor(public paginationService: PaginationService, private memberregistration: MemberRegistrationService, ) { }
+  constructor(public paginationService: PaginationService, private memberregistration: MemberRegistrationService) { }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -41,7 +39,7 @@ export class MemberListComponent {
             }
             else {
               alert('Something Went Wrong');
-              this._Route.navigate(['/Member/AllMember']);
+             // this._Route.navigate(['/Member/AllMember']);
             }
           }
         )
