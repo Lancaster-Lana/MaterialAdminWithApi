@@ -6,7 +6,7 @@ import { MemberRegistrationService } from '../Services/memberRegistration.servic
 
 @Component({
   selector: 'app-list',
-  templateUrl: 'memberlist.component.html'
+  templateUrl: 'memberList.component.html'
 })
 export class MemberListComponent {
 
