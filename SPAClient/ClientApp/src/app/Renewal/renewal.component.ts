@@ -87,13 +87,9 @@ export class RenewalComponent implements OnInit {
             );
             this.RenewalModel = response
             this.RenewalModel.NewDate = null;
-
           }
         );
-
       }
-
-
     }
 
     if (buttonType === "onrenew") {

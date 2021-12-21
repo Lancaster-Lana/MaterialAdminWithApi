@@ -30,14 +30,3 @@ P:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Inte
 P:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Interfaces.csproj.CopyComplete
 P:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Interfaces.dll
 P:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Interfaces.pdb
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\bin\Debug\WebAdmin.Interfaces.dll
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\bin\Debug\WebAdmin.Interfaces.pdb
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\bin\Debug\WebAdmin.Entities.dll
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\bin\Debug\WebAdmin.ViewModels.dll
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\bin\Debug\WebAdmin.Entities.pdb
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\bin\Debug\WebAdmin.ViewModels.pdb
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Interfaces.csprojAssemblyReference.cache
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Interfaces.csproj.CoreCompileInputs.cache
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Interfaces.csproj.CopyComplete
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Interfaces.dll
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Interface\obj\Debug\WebAdmin.Interfaces.pdb

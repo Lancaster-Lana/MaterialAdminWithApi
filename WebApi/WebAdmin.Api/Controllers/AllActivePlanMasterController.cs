@@ -57,12 +57,8 @@ namespace WebAdmin.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
-
-
     }
 }

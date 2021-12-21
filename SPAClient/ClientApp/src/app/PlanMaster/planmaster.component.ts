@@ -29,7 +29,6 @@ export class PlanMasterComponent implements OnInit {
         this._periodService = periodService;
         this._schemeService = schemeService;
         this._planService = planService;
-
     }
 
     ngOnInit(): void {
@@ -58,8 +57,6 @@ export class PlanMasterComponent implements OnInit {
     }
 
     onSubmit() {
-     
-
         this._planService.SavePlan(this.planModel).subscribe(
             response => {
             this.output = response

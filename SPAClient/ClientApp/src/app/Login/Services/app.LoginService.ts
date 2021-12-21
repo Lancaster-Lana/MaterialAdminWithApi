@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs'
-import { catchError, tap } from 'rxjs/operators'
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators/catchError';
+import { tap } from 'rxjs/operators/tap';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { LoginModel } from '../Models/app.LoginModel';
 import { environment } from '../../../environments/environment';
 

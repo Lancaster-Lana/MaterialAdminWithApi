@@ -16,7 +16,6 @@ namespace WebAdmin.Controllers
         {
             _planMaster = planMaster;
         }
-       
 
         // POST: api/GetTotalAmount
         [HttpPost]
@@ -37,6 +36,6 @@ namespace WebAdmin.Controllers
             {
                 throw;
             }
-        }      
+        }
     }
 }

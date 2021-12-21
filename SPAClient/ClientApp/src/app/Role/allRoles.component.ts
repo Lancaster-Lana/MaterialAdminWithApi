@@ -28,7 +28,7 @@ export class AllRoleComponent implements OnInit {
 
     constructor(private router: Router, private roleService: RoleService, private alertService: AlertService) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
         this.roleService.GetAllRoles().subscribe(allroles => {
                 this.RoleList = allroles;
                 this.dataSource = new MatTableDataSource(allroles);

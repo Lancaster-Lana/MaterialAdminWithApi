@@ -13,11 +13,3 @@ P:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entit
 P:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entities.dll
 P:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entities.pdb
 P:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entities.csprojAssemblyReference.cache
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\bin\Debug\WebAdmin.Entities.dll
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\bin\Debug\WebAdmin.Entities.pdb
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\bin\Debug\System.ComponentModel.Annotations.dll
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entities.csprojAssemblyReference.cache
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entities.csproj.CoreCompileInputs.cache
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entities.csproj.CopyComplete
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entities.dll
-D:\MY\GIT\MaterialAdminWithApi\WebApi\WebAdmin.Entities\obj\Debug\WebAdmin.Entities.pdb

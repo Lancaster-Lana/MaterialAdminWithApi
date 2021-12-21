@@ -11,11 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppUserLayoutComponent implements OnInit 
 {
-
   constructor() { }
 
   ngOnInit() {
   
   }
-
 }

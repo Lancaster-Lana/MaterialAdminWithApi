@@ -22,7 +22,7 @@ export class GenerateRecepitComponent implements OnInit {
     errorMessage: any;
     today :any;
     
-    ngOnInit(): void 
+    ngOnInit()
     {
         this.PaymentID = this._routeParams.snapshot.params['PaymentID'];
         this.today = new Date();

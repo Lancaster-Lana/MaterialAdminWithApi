@@ -46,13 +46,12 @@ namespace WebAdmin
             var connection = Configuration.GetConnectionString("DataConnection");
 
             services.AddDbContext<DatabaseContext>(options =>
-                    options.UseSqlServer(connection,
-                    sqlServerOptionsAction: sqlOptions =>
-                    {
-                        sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
-                        sqlOptions.MigrationsAssembly("WebAdmin.EF");
-                        sqlOptions.UseRowNumberForPaging();
-                    }));
+                    options.UseSqlServer(connection, sqlServerOptionsAction: sqlOptions =>
+                                        {
+                                            sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                                            sqlOptions.MigrationsAssembly("WebAdmin.EF");
+                                            sqlOptions.UseRowNumberForPaging();
+                                        }));
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -107,10 +106,8 @@ namespace WebAdmin
 
             // End Registering and Initializing AutoMapper
             services.AddControllersWithViews(options => { options.EnableEndpointRouting = false; options.Filters.Add(typeof(CustomExceptionFilterAttribute)); })
-                .AddNewtonsoftJson()
+                //.AddNewtonsoftJson()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
-           // services.AddCors();
            
             services.AddCors(options =>
             {

@@ -18,7 +18,6 @@ import {
   MatSnackBar, MatSnackBarConfig, MatSnackBarModule
 } from '@angular/material/snack-bar';
 
-
 import { MemberListComponent } from './MemberRegistration/List/memberList.component ';
 import { MemberViewComponent } from './MemberRegistration/List/memberView.component';
 import { PaymentOverviewComponent } from './Payment/List/paymentOverview.component';
