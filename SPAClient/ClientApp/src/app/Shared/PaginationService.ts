@@ -11,6 +11,10 @@ export class PaginationService
     get page(): number {
         return this.paginationModel.pageIndex;
     }
+
+    get pageSize(): number {
+      return this.paginationModel.pageSize;
+    }
     get selectItemsPerPage(): number[] {
         return this.paginationModel.selectItemsPerPage;
     }

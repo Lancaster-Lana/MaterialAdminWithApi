@@ -9,7 +9,7 @@ export class GenerateRecepitViewModel
     public  NextRenwalDate : string;
     public  PaymentAmount : string;
     public  CreateDate : string;
-    public  ServiceTax : string;     
+    public  ServiceTax : string;
     public  PlanAmount : string;  
     public  ServicetaxAmount : string;  
 }

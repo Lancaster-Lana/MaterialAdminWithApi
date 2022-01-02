@@ -7,21 +7,19 @@ import { GenerateRecepitRequestModel } from './Models/app.GenerateRecepitRequest
 import { GenerateRecepitViewModel } from './Models/app.GenerateRecepitViewModel';
 
 @Component({
-    templateUrl: './Recepit.html',
-    styleUrls: ['../Content/vendor/bootstrap/css/bootstrap.min.css',
-        '../Content/vendor/metisMenu/metisMenu.min.css',
-        '../Content/dist/css/sb-admin-2.css',
-        '../Content/vendor/font-awesome/css/font-awesome.min.css'
-    ]
+    templateUrl: './Recepit.html'
 })
 export class GenerateRecepitComponent implements OnInit {
     PaymentID: any;
-    private _generateRecepit;
-    GenerateRecepitRequestModel: GenerateRecepitRequestModel = new GenerateRecepitRequestModel();
-    GenerateRecepitViewModel :GenerateRecepitViewModel =new GenerateRecepitViewModel();
+   _generateRecepit;
     errorMessage: any;
     today :any;
-    
+    GenerateRecepitRequestModel: GenerateRecepitRequestModel = new GenerateRecepitRequestModel();
+    GenerateRecepitViewModel :GenerateRecepitViewModel =new GenerateRecepitViewModel();
+
+    constructor(private _Route: Router, private _routeParams: ActivatedRoute, private generateRecepit: GenerateRecepit) {
+        this._generateRecepit = generateRecepit;
+    }
     ngOnInit()
     {
         this.PaymentID = this._routeParams.snapshot.params['PaymentID'];
@@ -36,8 +34,24 @@ export class GenerateRecepitComponent implements OnInit {
         );
     }
 
-    constructor(private _Route: Router, private _routeParams: ActivatedRoute, private generateRecepit: GenerateRecepit) {
-        this._generateRecepit = generateRecepit;
+
+    onSubmit() {
+      console.log(this._generateRecepit);
+ 
+      //this.generateRecepit().subscribe(
+      //  response => {
+      //    this.output = response
+      //    if (this.output.StatusCode == "409") {
+      //      alert('Member Already Exists');
+      //    }
+      //    else if (this.output.StatusCode == "200") {
+      //      alert('Member Added Successfully');
+      //      this.Router.navigate(['/Member/All']);
+      //    }
+      //    else {
+      //      alert('Something Went Wrong');
+      //    }
+      //  });
     }
 
     public captureScreen() 
@@ -52,10 +66,10 @@ export class GenerateRecepitComponent implements OnInit {
             var heightLeft = imgHeight;
 
             const contentDataURL = canvas.toDataURL('image/png')
-            let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
+            //let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
             var position = 0;
-            pdf.addImage(contentDataURL, 'PNG', 20, 20, imgWidth, imgHeight)
-            pdf.save('PaymentRecepit.pdf'); // Generated PDF 
+            //pdf.addImage(contentDataURL, 'PNG', 20, 20, imgWidth, imgHeight)
+            //pdf.save('PaymentRecepit.pdf'); // Generated PDF 
 
         });
     }

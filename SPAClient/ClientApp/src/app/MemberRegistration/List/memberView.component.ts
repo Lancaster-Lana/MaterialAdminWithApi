@@ -37,4 +37,24 @@ export class MemberViewComponent implements OnInit {
         this.dataSource = result.body.value;
       });
   }
+
+
+  //Delete(MemberId): void {
+  //  console.log(MemberId);
+  //  if (confirm("Are you sure to delete Member ?")) {
+  //    this.memberregistration.DeleteMember(MemberId).subscribe
+  //      (
+  //        response => {
+  //          if (response.StatusCode == "200") {
+  //            alert('Deleted Member Successfully');
+  //            location.reload();
+  //          }
+  //          else {
+  //            alert('Something Went Wrong');
+  //            this._Route.navigate(['/Member/All']);
+  //          }
+  //        }
+  //      )
+  //  }
+  // }
 }

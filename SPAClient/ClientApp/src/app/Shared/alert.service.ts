@@ -177,7 +177,7 @@ export class AlertService {
   }
 
   resetStickyMessage() {
-    this.stickyMessages.next();
+    this.stickyMessages = null;
   }
 
   getDialogEvent(): Observable<AlertDialog> {

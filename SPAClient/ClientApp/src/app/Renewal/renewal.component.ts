@@ -55,7 +55,8 @@ export class RenewalComponent implements OnInit {
     });
   }
 
-  onSubmit(buttonType): void {
+  onSubmit(buttonType)
+  {
     if (buttonType === "onsearch") {
       if (this.RenewalModel.SearchMemberNo == undefined) {
         let config = new MatSnackBarConfig();

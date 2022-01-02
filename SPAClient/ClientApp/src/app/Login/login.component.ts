@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit
 
   onSubmit() {
     this.loginService.validateLoginUser(this.LoginModel)
-      .subscribe(response => {
+      .subscribe((response : any) => {
         if (response.token == null && response.usertype == "0") {
           let config = new MatSnackBarConfig();
           config.duration = this.setAutoHide ? this.autoHide : 0;

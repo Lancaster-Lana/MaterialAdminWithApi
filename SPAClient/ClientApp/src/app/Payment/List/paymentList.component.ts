@@ -5,7 +5,7 @@ import { PaymentDetailsModel } from '../Models/paymentDetails.model';
 
 @Component({
   selector: 'paymentlist',
-  templateUrl: './app.Paymentlist.component.html'
+  templateUrl: './paymentlist.component.html'
 })
 export class PaymentListComponent
 {

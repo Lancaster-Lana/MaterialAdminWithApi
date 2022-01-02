@@ -7,7 +7,7 @@
           <div class="row">
             <div class="col-md-4">
               <label for="name">User name</label>
-              <input type="text" class="form-control" name="UserName" [disabled]="true" [(ngModel)]="UserModel.userName" maxlength="50"
+              <input type="text" class="form-control" name="UserName" [disabled]="true" [(ngModel)]="UserModel.UserName" maxlength="50"
                      #refUserName="ngModel" id="UserName" required>
               <div *ngIf="!refUserName.valid  && (refUserName.dirty || refUserName.touched)" class="alert alert-danger">
                 <div [hidden]="!refUserName.errors.required">
@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-4">
               <label for="name">Full name</label>
-              <input type="text" class="form-control" name="FullName" maxlength="50" [(ngModel)]="UserModel.fullName"
+              <input type="text" class="form-control" name="FullName" maxlength="50" [(ngModel)]="UserModel.FullName"
                      #refFullName="ngModel" id="FullName" required>
               <div *ngIf="!refFullName.valid  && (refFullName.dirty || refFullName.touched)" class="alert alert-danger">
                 <div [hidden]="!refFullName.errors.required">
@@ -28,7 +28,7 @@
             <div class="col-md-4">
               <label for="EmailId">Email</label>
               <input type="text" class="form-control" maxlength="50" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-                     #refEmailId="ngModel" id="EmailId" name="EmailId" [(ngModel)]="UserModel.emailId" required>
+                     #refEmailId="ngModel" id="EmailId" name="EmailId" [(ngModel)]="UserModel.EmailId" required>
               <div *ngIf="!refEmailId.valid  && (refEmailId.dirty || refEmailId.touched)" class="alert alert-danger">
                 <div [hidden]="!refEmailId.errors.required">
                   Email is required
@@ -39,8 +39,8 @@
               </div>
             </div>
             <div class="col-md-4">
-              <label for="name">Contact</label>
-              <input type="text" class="form-control" #refContactno="ngModel" name="Contactno" id="Contactno" [(ngModel)]="UserModel.contactno"
+              <label for="Contactno">Contact</label>
+              <input type="text" class="form-control" #refContactno="ngModel" name="Contactno" id="Contactno" [(ngModel)]="UserModel.Contactno"
                      maxlength="50" required>
               <div *ngIf="!refContactno.valid  && (refContactno.dirty || refContactno.touched)" class="alert alert-danger">
                 <div [hidden]="!refContactno.errors.required">
@@ -49,8 +49,8 @@
               </div>
             </div>
             <div class="col-md-4">
-              <label for="name">Password</label>
-              <input type="password" class="form-control" #refPassword="ngModel" id="Password" name="Password" [(ngModel)]="UserModel.password" maxlength="50" required>
+              <label for="Password">Password</label>
+              <input type="password" class="form-control" #refPassword="ngModel" id="Password" name="Password" [(ngModel)]="UserModel.Password" maxlength="50" required>
               <div *ngIf="!refPassword.valid  && (refPassword.dirty || refPassword.touched)" class="alert alert-danger">
                 <div [hidden]="!refPassword.errors.required">
                   Password is required
@@ -58,7 +58,7 @@
               </div>
             </div>
             <div class="col-md-4">
-              <input type="checkbox" #refStatus="ngModel" id="Status" name="Status" [(ngModel)]="UserModel.status" maxlength="50" required>
+              <input type="checkbox" #refStatus="ngModel" id="Status" name="Status" [(ngModel)]="UserModel.Status" maxlength="50" required>
               <label for="Status">Status</label>
               <div *ngIf="!refStatus.valid  && (refStatus.dirty || refStatus.touched)" class="alert alert-danger">
                 <div [hidden]="!refStatus.errors.required">

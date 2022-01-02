@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators/catchError';
-import { tap } from 'rxjs/operators/tap';
+import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { LoginModel } from '../Models/app.LoginModel';
@@ -11,16 +10,20 @@ import { environment } from '../../../environments/environment';
     providedIn: 'root'
 })
 export class LoginService {
-    public token: string;
-    constructor(private _http: HttpClient, private _Route: Router) {
 
-    }
     private apiUrl = environment.apiEndpoint + "/api/Authenticate/";
+    public token: string;
+
+    constructor(private _http: HttpClient, private _Route: Router) {
+    }
 
     public validateLoginUser(loginmodel: LoginModel) {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+
+      let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
         return this._http.post<any>(this.apiUrl, loginmodel, { headers: headers })
-            .pipe(tap(data => {
+            .pipe(tap((data : any) => {
                 console.log(data);
 
                 if (data.token != null) {
@@ -30,7 +33,7 @@ export class LoginService {
                     }
                     else if (data.usertype == "1") {
                         // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('AdminUser', JSON.stringify({ username: loginmodel.Username, token: data.Token }));
+                        localStorage.setItem('AdminUser', JSON.stringify({ username: loginmodel.Username, token: data.token }));
                     }
                     // return true to indicate successful login
                     return data;

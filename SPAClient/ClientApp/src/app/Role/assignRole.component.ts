@@ -9,6 +9,8 @@ import { UserService } from '../User/Services/userService';
     templateUrl: './assignandRemoveRole.component.html'
 })
 export class AssignRoleComponent implements OnInit {
+
+   buttonType: string = "onsearch";
     UserList: UserDropdownModel[];
     AssignRemoveModel: AssignRemoveModel = new AssignRemoveModel();
     RoleList: RoleModel[];

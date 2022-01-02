@@ -53,16 +53,12 @@ namespace WebAdmin.Controllers
                             };
                             var token = tokenHandler.CreateToken(tokenDescriptor);
                             value.Token = tokenHandler.WriteToken(token);
+                            value.Usertype = userdetails.RoleId;
 
                             // remove password before returning
                             value.Password = null;
-                            value.Usertype = userdetails.RoleId;
-
                             return Ok(value);
                         }
-                        value.Password = null;
-                        value.Usertype = 0;
-                        return Ok(value);                        
                     }
                     value.Password = null;
                     value.Usertype = 0;

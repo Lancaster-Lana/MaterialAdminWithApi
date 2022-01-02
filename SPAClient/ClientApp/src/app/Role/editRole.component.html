@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="name">RoleName</label>
-                    <input type="text" class="form-control" #refRoleName="ngModel" id="RoleName" name="RoleName" [(ngModel)]="RoleModel.roleName" maxlength="50"
+                    <input type="text" class="form-control" #refRoleName="ngModel" id="RoleName" name="RoleName" [(ngModel)]="RoleModel.RoleName" maxlength="50"
                          required />
                     <div *ngIf="!refRoleName.valid  && (refRoleName.dirty || refRoleName.touched)" class="alert alert-danger">
                         <div [hidden]="!refRoleName.errors.required">
@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="name">Status</label>
-                    <input type="checkbox" #refStatus="ngModel" id="Status" name="Status" [(ngModel)]="RoleModel.status" maxlength="50" />
+                    <input type="checkbox" #refStatus="ngModel" id="Status" name="Status" [(ngModel)]="RoleModel.Status" maxlength="50" />
                 </div>
                 <div class="col-md-4">
                   <a class="btn btn-info" [routerLink]="['/Admin/AllRoles']">All Roles </a>

@@ -19,7 +19,7 @@ export class UserRegistrationComponent
         private userService: UserService,
         private alertService: AlertService) { }
 
-    onSubmit() 
+    onSubmit()
     {
       this.userService.SaveUser(this.UserModel).subscribe(response => {
           this.output = response;

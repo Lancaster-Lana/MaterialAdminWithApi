@@ -8,12 +8,12 @@ import { RouterModule } from '@angular/router';
 import { RoutingConfig } from './app-routing.module';
 import { BsDatepickerModule, } from 'ngx-bootstrap/datepicker';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import {
   MatSnackBar, MatSnackBarConfig, MatSnackBarModule
 } from '@angular/material/snack-bar';
